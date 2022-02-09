@@ -1,0 +1,66 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+
+// fontawesome webfonts フォルダ
+$fa-font-path: "../vendor/fontawesome/webfonts";
+@import "../vendor/fontawesome/scss/fontawesome.scss";
+@import "../vendor/fontawesome/scss/solid.scss";
+@import "../vendor/fontawesome/scss/brands.scss";
+
+$font-family-base: -apple-system, 'Noto Sans JP', BlinkMacSystemFont, "Source Han Sans JP", "Segoe UI", Roboto, "Helvetica Neue", "游ゴシック Medium", "Yu Gothic", YuGothic, YuGothicMedium, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+//==== init
+// レスポンシブ用fontサイズ調整
+$enable-responsive-font-sizes: true;
+
+html {
+    font-size: 62.5%; // 追加 10px＝1rem
+}
+
+$font-size-base: 1.4rem;
+$rfs-base-font-size: 1.4rem;
+// 1 rem = $rfs-rem-value px
+$rfs-rem-value: 10;
+
+// Bootstrap 設定
+// $enable-shadows: true;
+$enable-gradients: true;
+
+//===========================================
+// Bootstrap theme
+//===========================================
+@import "../vendor/bootstrap/scss/functions";
+@import "../vendor/bootstrap/scss/variables";
+
+
+//===========================================
+// library
+//===========================================
+@import "../vendor/bootstrap/scss/bootstrap";
+
+
+//===========================================
+// 共通カスタマイズ
+//===========================================
+// 文字がはみ出るボタンの対策
+.btn {
+    white-space: normal;
+}
+.imeOff {
+    ime-mode: disabled;
+}
+
+.imeOn {
+    ime-mode: active;
+}
+
+.imeAlpNumNornal {
+    ime-mode: inactive;
+}
+// brタグ無効
+.hideBr {
+    br {
+        display: none;
+    }
+}
