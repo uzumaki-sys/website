@@ -53,12 +53,33 @@ class Tab {
     return VERSION
   }
 
+  // Static
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      const $this = $(this)
+      let data = $this.data(DATA_KEY)
+
+      if (!data) {
+        data = new Tab(this)
+        $this.data(DATA_KEY, data)
+      }
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config]()
+      }
+    })
+  }
+
   // Public
   show() {
     if (this._element.parentNode &&
-        this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-        $(this._element).hasClass(CLASS_NAME_ACTIVE) ||
-        $(this._element).hasClass(CLASS_NAME_DISABLED)) {
+      this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
+      $(this._element).hasClass(CLASS_NAME_ACTIVE) ||
+      $(this._element).hasClass(CLASS_NAME_DISABLED)) {
       return
     }
 
@@ -88,7 +109,7 @@ class Tab {
     $(this._element).trigger(showEvent)
 
     if (showEvent.isDefaultPrevented() ||
-        hideEvent.isDefaultPrevented()) {
+      hideEvent.isDefaultPrevented()) {
       return
     }
 
@@ -200,27 +221,6 @@ class Tab {
     if (callback) {
       callback()
     }
-  }
-
-  // Static
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      const $this = $(this)
-      let data = $this.data(DATA_KEY)
-
-      if (!data) {
-        data = new Tab(this)
-        $this.data(DATA_KEY, data)
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
-      }
-    })
   }
 }
 

@@ -11,7 +11,7 @@
 
 const path = require('path')
 const rollup = require('rollup')
-const { babel } = require('@rollup/plugin-babel')
+const {babel} = require('@rollup/plugin-babel')
 const banner = require('./banner.js')
 
 const TEST = process.env.NODE_ENV === 'test'

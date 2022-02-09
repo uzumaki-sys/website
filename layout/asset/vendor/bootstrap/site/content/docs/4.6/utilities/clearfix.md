@@ -1,13 +1,12 @@
 ---
-layout: docs
-title: Clearfix
-description: Quickly and easily clear floated content within a container by adding a clearfix utility.
-group: utilities
+layout: docs title: Clearfix description: Quickly and easily clear floated content within a container by adding a
+clearfix utility. group: utilities
 ---
 
 Easily clear `float`s by adding `.clearfix` **to the parent element**. Can also be used as a mixin.
 
 ```html
+
 <div class="clearfix">...</div>
 ```
 
@@ -27,7 +26,8 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Can also 
 }
 ```
 
-The following example shows how the clearfix can be used. Without the clearfix the wrapping div would not span around the buttons which would cause a broken layout.
+The following example shows how the clearfix can be used. Without the clearfix the wrapping div would not span around
+the buttons which would cause a broken layout.
 
 {{< example >}}
 <div class="bg-info clearfix">

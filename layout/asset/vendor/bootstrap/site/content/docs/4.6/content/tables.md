@@ -1,16 +1,16 @@
 ---
-layout: docs
-title: Tables
-description: Documentation and examples for opt-in styling of tables (given their prevalent use in JavaScript plugins) with Bootstrap.
-group: content
-toc: true
+layout: docs title: Tables description: Documentation and examples for opt-in styling of tables (given their prevalent
+use in JavaScript plugins) with Bootstrap. group: content toc: true
 ---
 
 ## Examples
 
-Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our various included modifier classes.
+Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our
+tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our
+various included modifier classes.
 
-Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. **All table styles are inherited in Bootstrap 4**, meaning any nested tables will be styled in the same manner as the parent.
+Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. **All table styles are inherited
+in Bootstrap 4**, meaning any nested tables will be styled in the same manner as the parent.
 
 {{< example >}}
 <table class="table">
@@ -82,7 +82,8 @@ You can also invert the colors—with light text on dark backgrounds—with `.ta
 
 ## Table head options
 
-Similar to tables and dark tables, use the modifier classes `.thead-light` or `.thead-dark` to make `<thead>`s appear light or dark gray.
+Similar to tables and dark tables, use the modifier classes `.thead-light` or `.thead-dark` to make `<thead>`s appear
+light or dark gray.
 
 {{< example >}}
 <table class="table">
@@ -547,7 +548,8 @@ Use contextual classes to color table rows or individual cells.
 </tr>
 {{< /highlight >}}
 
-Regular table background variants are not available with the dark table, however, you may use [text or background utilities]({{< docsref "/utilities/colors" >}}) to achieve similar styles.
+Regular table background variants are not available with the dark table, however, you may
+use [text or background utilities]({{< docsref "/utilities/colors" >}}) to achieve similar styles.
 
 <div class="bd-example">
   <table class="table table-dark">
@@ -626,19 +628,17 @@ Regular table background variants are not available with the dark table, however
 </tr>
 ```
 
-{{< callout warning >}}
-{{< partial "callout-warning-color-assistive-technologies.md" >}}
-{{< /callout >}}
+{{< callout warning >}} {{< partial "callout-warning-color-assistive-technologies.md" >}} {{< /callout >}}
 
-Create responsive tables by wrapping any `.table` with `.table-responsive{-sm|-md|-lg|-xl}`, making the table scroll horizontally at each `max-width` breakpoint of up to (but not including) 576px, 768px, 992px, and 1120px, respectively.
+Create responsive tables by wrapping any `.table` with `.table-responsive{-sm|-md|-lg|-xl}`, making the table scroll
+horizontally at each `max-width` breakpoint of up to (but not including) 576px, 768px, 992px, and 1120px, respectively.
 
-{{< callout info >}}
-{{< partial "callout-info-mediaqueries-breakpoints.md" >}}
-{{< /callout >}}
+{{< callout info >}} {{< partial "callout-info-mediaqueries-breakpoints.md" >}} {{< /callout >}}
 
 ## Captions
 
-A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it's about and decide if they want to read it.
+A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand
+what it's about and decide if they want to read it.
 
 {{< example >}}
 <table class="table">
@@ -676,13 +676,16 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 
 ## Responsive tables
 
-Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.table-responsive{-sm|-md|-lg|-xl}`.
+Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by
+wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to
+by using `.table-responsive{-sm|-md|-lg|-xl}`.
 
 {{< callout warning >}}
+
 ##### Vertical clipping/truncation
 
-Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
-{{< /callout >}}
+Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges
+of the table. In particular, this can clip off dropdown menus and other third-party widgets. {{< /callout >}}
 
 ### Always responsive
 
@@ -748,6 +751,7 @@ Across every breakpoint, use `.table-responsive` for horizontally scrolling tabl
 </div>
 
 ```html
+
 <div class="table-responsive">
   <table class="table">
     ...
@@ -757,13 +761,12 @@ Across every breakpoint, use `.table-responsive` for horizontally scrolling tabl
 
 ### Breakpoint specific
 
-Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables up to a particular breakpoint. From that breakpoint and up, the table will behave normally and not scroll horizontally.
+Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables up to a particular breakpoint. From that
+breakpoint and up, the table will behave normally and not scroll horizontally.
 
 **These tables may appear broken until their responsive styles apply at specific viewport widths.**
 
-{{< tables.inline >}}
-{{ range $.Site.Data.breakpoints }}
-{{ if not (eq .breakpoint "xs") }}
+{{< tables.inline >}} {{ range $.Site.Data.breakpoints }} {{ if not (eq .breakpoint "xs") }}
 <div class="bd-example">
 <div class="table-responsive{{ .abbr }}">
   <table class="table">
@@ -822,10 +825,7 @@ Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables u
 {{- end -}}
 {{< /tables.inline >}}
 
-{{< highlight html >}}
-{{< tables.inline >}}
-{{- range $.Site.Data.breakpoints -}}
-{{- if not (eq .breakpoint "xs") }}
+{{< highlight html >}} {{< tables.inline >}} {{- range $.Site.Data.breakpoints -}} {{- if not (eq .breakpoint "xs") }}
 <div class="table-responsive{{ .abbr }}">
   <table class="table">
     ...

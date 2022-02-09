@@ -1,21 +1,27 @@
 ---
-layout: docs
-title: Modal
-description: Use Bootstrap's JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content.
-group: components
-toc: true
+layout: docs title: Modal description: Use Bootstrap's JavaScript modal plugin to add dialogs to your site for
+lightboxes, user notifications, or completely custom content. group: components toc: true
 ---
 
 ## How it works
 
-Before getting started with Bootstrap's modal component, be sure to read the following as our menu options have recently changed.
+Before getting started with Bootstrap's modal component, be sure to read the following as our menu options have recently
+changed.
 
-- Modals are built with HTML, CSS, and JavaScript. They're positioned over everything else in the document and remove scroll from the `<body>` so that modal content scrolls instead.
+- Modals are built with HTML, CSS, and JavaScript. They're positioned over everything else in the document and remove
+  scroll from the `<body>` so that modal content scrolls instead.
 - Clicking on the modal "backdrop" will automatically close the modal.
-- Bootstrap only supports one modal window at a time. Nested modals aren't supported as we believe them to be poor user experiences.
-- Modals use `position: fixed`, which can sometimes be a bit particular about its rendering. Whenever possible, place your modal HTML in a top-level position to avoid potential interference from other elements. You'll likely run into issues when nesting a `.modal` within another fixed element.
-- Once again, due to `position: fixed`, there are some caveats with using modals on mobile devices. [See our browser support docs]({{< docsref "/getting-started/browsers-devices#modals-and-dropdowns-on-mobile" >}}) for details.
-- Due to how HTML5 defines its semantics, [the `autofocus` HTML attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) has no effect in Bootstrap modals. To achieve the same effect, use some custom JavaScript:
+- Bootstrap only supports one modal window at a time. Nested modals aren't supported as we believe them to be poor user
+  experiences.
+- Modals use `position: fixed`, which can sometimes be a bit particular about its rendering. Whenever possible, place
+  your modal HTML in a top-level position to avoid potential interference from other elements. You'll likely run into
+  issues when nesting a `.modal` within another fixed element.
+- Once again, due to `position: fixed`, there are some caveats with using modals on mobile
+  devices. [See our browser support docs]({{< docsref "
+  /getting-started/browsers-devices#modals-and-dropdowns-on-mobile" >}}) for details.
+- Due to how HTML5 defines its
+  semantics, [the `autofocus` HTML attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus)
+  has no effect in Bootstrap modals. To achieve the same effect, use some custom JavaScript:
 
 ```js
 $('#myModal').on('shown.bs.modal', function () {
@@ -23,9 +29,7 @@ $('#myModal').on('shown.bs.modal', function () {
 })
 ```
 
-{{< callout info >}}
-{{< partial "callout-info-prefersreducedmotion.md" >}}
-{{< /callout >}}
+{{< callout info >}} {{< partial "callout-info-prefersreducedmotion.md" >}} {{< /callout >}}
 
 Keep reading for demos and usage guidelines.
 
@@ -33,7 +37,9 @@ Keep reading for demos and usage guidelines.
 
 ### Modal components
 
-Below is a _static_ modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
+Below is a _static_ modal example (meaning its `position` and `display` have been overridden). Included are the modal
+header, modal body (required for `padding`), and modal footer (optional). We ask that you include modal headers with
+dismiss actions whenever possible, or provide another explicit dismiss action.
 
 <div class="bd-example bd-example-modal">
   <div class="modal" tabindex="-1">
@@ -58,6 +64,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 </div>
 
 ```html
+
 <div class="modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -174,7 +181,8 @@ When backdrop is set to static, the modal will not close when clicking outside i
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -197,7 +205,8 @@ When backdrop is set to static, the modal will not close when clicking outside i
 
 ### Scrolling long content
 
-When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.
+When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo
+below to see what we mean.
 
 <div class="modal fade" id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog">
@@ -232,7 +241,8 @@ When modals become too long for the user's viewport or device, they scroll indep
   </button>
 </div>
 
-You can also create a scrollable modal that allows scroll the modal body by adding `.modal-dialog-scrollable` to `.modal-dialog`.
+You can also create a scrollable modal that allows scroll the modal body by adding `.modal-dialog-scrollable`
+to `.modal-dialog`.
 
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
@@ -344,7 +354,8 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 ### Tooltips and popovers
 
-[Tooltips]({{< docsref "/components/tooltips" >}}) and [popovers]({{< docsref "/components/popovers" >}}) can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
+[Tooltips]({{< docsref "/components/tooltips" >}}) and [popovers]({{< docsref "/components/popovers" >}}) can be placed
+within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
 
 <div class="modal fade" id="exampleModalPopovers" tabindex="-1" aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -377,18 +388,23 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 </div>
 
 ```html
+
 <div class="modal-body">
   <h5>Popover in a modal</h5>
-  <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+  <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title"
+             data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
   <hr>
   <h5>Tooltips in a modal</h5>
-  <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+  <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test"
+                                                                           title="Tooltip">that link</a> have tooltips
+    on hover.</p>
 </div>
 ```
 
 ### Using the grid
 
-Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` within the `.modal-body`. Then, use the normal grid system classes as you would anywhere else.
+Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` within the `.modal-body`. Then, use the
+normal grid system classes as you would anywhere else.
 
 <div class="modal fade" id="gridSystemModal" tabindex="-1" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -440,6 +456,7 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
 </div>
 
 ```html
+
 <div class="modal-body">
   <div class="container-fluid">
     <div class="row">
@@ -472,14 +489,21 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
 
 ### Varying modal content
 
-Have a bunch of buttons that all trigger the same modal with slightly different contents? Use `event.relatedTarget` and [HTML `data-*` attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) (possibly [via jQuery](https://api.jquery.com/data/)) to vary the contents of the modal depending on which button was clicked.
+Have a bunch of buttons that all trigger the same modal with slightly different contents? Use `event.relatedTarget`
+and [HTML `data-*` attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) (
+possibly [via jQuery](https://api.jquery.com/data/)) to vary the contents of the modal depending on which button was
+clicked.
 
-Below is a live demo followed by example HTML and JavaScript. For more information, [read the modal events docs](#events) for details on `relatedTarget`.
+Below is a live demo followed by example HTML and JavaScript. For more
+information, [read the modal events docs](#events) for details on `relatedTarget`.
 
 {{< example >}}
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open
+modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open
+modal for @fat</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+Open modal for @getbootstrap</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -525,7 +549,9 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 
 ### Change animation
 
-The `$modal-fade-transform` variable determines the transform state of `.modal-dialog` before the modal fade-in animation, the `$modal-show-transform` variable determines the transform of `.modal-dialog` at the end of the modal fade-in animation.
+The `$modal-fade-transform` variable determines the transform state of `.modal-dialog` before the modal fade-in
+animation, the `$modal-show-transform` variable determines the transform of `.modal-dialog` at the end of the modal
+fade-in animation.
 
 If you want for example a zoom-in animation, you can set `$modal-fade-transform: scale(.8)`.
 
@@ -534,6 +560,7 @@ If you want for example a zoom-in animation, you can set `$modal-fade-transform:
 For modals that simply appear rather than fade in to view, remove the `.fade` class from your modal markup.
 
 ```html
+
 <div class="modal" tabindex="-1" aria-labelledby="..." aria-hidden="true">
   ...
 </div>
@@ -541,19 +568,25 @@ For modals that simply appear rather than fade in to view, remove the `.fade` cl
 
 ### Dynamic heights
 
-If the height of a modal changes while it is open, you should call `$('#myModal').modal('handleUpdate')` to readjust the modal's position in case a scrollbar appears.
+If the height of a modal changes while it is open, you should call `$('#myModal').modal('handleUpdate')` to readjust the
+modal's position in case a scrollbar appears.
 
 ### Accessibility
 
-Be sure to add `aria-labelledby="..."`, referencing the modal title, to `.modal`. Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`. Note that you don't need to add `role="dialog"` since we already add it via JavaScript.
+Be sure to add `aria-labelledby="..."`, referencing the modal title, to `.modal`. Additionally, you may give a
+description of your modal dialog with `aria-describedby` on `.modal`. Note that you don't need to add `role="dialog"`
+since we already add it via JavaScript.
 
 ### Embedding YouTube videos
 
-Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
+Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and
+more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal)
+for more information.
 
 ## Optional sizes
 
-Modals have three optional sizes, available via modifier classes to be placed on a `.modal-dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
+Modals have three optional sizes, available via modifier classes to be placed on a `.modal-dialog`. These sizes kick in
+at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -596,6 +629,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 </div>
 
 ```html
+
 <div class="modal-dialog modal-xl">...</div>
 <div class="modal-dialog modal-lg">...</div>
 <div class="modal-dialog modal-sm">...</div>
@@ -651,13 +685,17 @@ Our default modal without modifier class constitutes the "medium" size modal.
 
 ## Usage
 
-The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds `.modal-open` to the `<body>` to override default scrolling behavior and generates a `.modal-backdrop` to provide a click area for dismissing shown modals when clicking outside the modal.
+The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds `.modal-open` to
+the `<body>` to override default scrolling behavior and generates a `.modal-backdrop` to provide a click area for
+dismissing shown modals when clicking outside the modal.
 
 ### Via data attributes
 
-Activate a modal without writing JavaScript. Set `data-toggle="modal"` on a controller element, like a button, along with a `data-target="#foo"` or `href="#foo"` to target a specific modal to toggle.
+Activate a modal without writing JavaScript. Set `data-toggle="modal"` on a controller element, like a button, along
+with a `data-target="#foo"` or `href="#foo"` to target a specific modal to toggle.
 
 ```html
+
 <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
 ```
 
@@ -671,7 +709,8 @@ $('#myModal').modal(options)
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-backdrop=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as
+in `data-backdrop=""`.
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -712,9 +751,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{{< callout danger >}}
-{{< partial "callout-danger-async-methods.md" >}}
-{{< /callout >}}
+{{< callout danger >}} {{< partial "callout-danger-async-methods.md" >}} {{< /callout >}}
 
 #### `.modal(options)`
 
@@ -728,7 +765,8 @@ $('#myModal').modal({
 
 #### `.modal('toggle')`
 
-Manually toggles a modal. **Returns to the caller before the modal has actually been shown or hidden** (i.e. before the `shown.bs.modal` or `hidden.bs.modal` event occurs).
+Manually toggles a modal. **Returns to the caller before the modal has actually been shown or hidden** (i.e. before
+the `shown.bs.modal` or `hidden.bs.modal` event occurs).
 
 ```js
 $('#myModal').modal('toggle')
@@ -736,7 +774,8 @@ $('#myModal').modal('toggle')
 
 #### `.modal('show')`
 
-Manually opens a modal. **Returns to the caller before the modal has actually been shown** (i.e. before the `shown.bs.modal` event occurs).
+Manually opens a modal. **Returns to the caller before the modal has actually been shown** (i.e. before
+the `shown.bs.modal` event occurs).
 
 ```js
 $('#myModal').modal('show')
@@ -744,7 +783,8 @@ $('#myModal').modal('show')
 
 #### `.modal('hide')`
 
-Manually hides a modal. **Returns to the caller before the modal has actually been hidden** (i.e. before the `hidden.bs.modal` event occurs).
+Manually hides a modal. **Returns to the caller before the modal has actually been hidden** (i.e. before
+the `hidden.bs.modal` event occurs).
 
 ```js
 $('#myModal').modal('hide')
@@ -752,7 +792,8 @@ $('#myModal').modal('hide')
 
 #### `.modal('handleUpdate')`
 
-Manually readjust the modal's position if the height of a modal changes while it is open (i.e. in case a scrollbar appears).
+Manually readjust the modal's position if the height of a modal changes while it is open (i.e. in case a scrollbar
+appears).
 
 ```js
 $('#myModal').modal('handleUpdate')
@@ -764,7 +805,8 @@ Destroys an element's modal.
 
 ### Events
 
-Bootstrap's modal class exposes a few events for hooking into modal functionality. All modal events are fired at the modal itself (i.e. at the `<div class="modal">`).
+Bootstrap's modal class exposes a few events for hooking into modal functionality. All modal events are fired at the
+modal itself (i.e. at the `<div class="modal">`).
 
 <table class="table table-bordered table-striped">
   <thead>

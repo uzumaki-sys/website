@@ -88,6 +88,33 @@ class Modal {
     return Default
   }
 
+  // Static
+  static _jQueryInterface(config, relatedTarget) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _config = {
+        ...Default,
+        ...$(this).data(),
+        ...(typeof config === 'object' && config ? config : {})
+      }
+
+      if (!data) {
+        data = new Modal(this, _config)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config](relatedTarget)
+      } else if (_config.show) {
+        data.show(relatedTarget)
+      }
+    })
+  }
+
   // Public
   toggle(relatedTarget) {
     return this._isShown ? this.hide() : this.show(relatedTarget)
@@ -259,7 +286,7 @@ class Modal {
     const modalBody = this._dialog ? this._dialog.querySelector(SELECTOR_MODAL_BODY) : null
 
     if (!this._element.parentNode ||
-        this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
+      this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
       // Don't move modal's DOM position
       document.body.appendChild(this._element)
     }
@@ -314,8 +341,8 @@ class Modal {
       .off(EVENT_FOCUSIN) // Guard against infinite focus loop
       .on(EVENT_FOCUSIN, event => {
         if (document !== event.target &&
-            this._element !== event.target &&
-            $(this._element).has(event.target).length === 0) {
+          this._element !== event.target &&
+          $(this._element).has(event.target).length === 0) {
           this._element.focus()
         }
       })
@@ -364,6 +391,11 @@ class Modal {
       this._backdrop = null
     }
   }
+
+  // ----------------------------------------------------------------------
+  // the following methods are used to handle overflowing modals
+  // todo (fat): these should probably be refactored out of modal.js
+  // ----------------------------------------------------------------------
 
   _showBackdrop(callback) {
     const animate = $(this._element).hasClass(CLASS_NAME_FADE) ?
@@ -439,11 +471,6 @@ class Modal {
       callback()
     }
   }
-
-  // ----------------------------------------------------------------------
-  // the following methods are used to handle overflowing modals
-  // todo (fat): these should probably be refactored out of modal.js
-  // ----------------------------------------------------------------------
 
   _adjustDialog() {
     const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
@@ -535,33 +562,6 @@ class Modal {
     const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth
     document.body.removeChild(scrollDiv)
     return scrollbarWidth
-  }
-
-  // Static
-  static _jQueryInterface(config, relatedTarget) {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _config = {
-        ...Default,
-        ...$(this).data(),
-        ...(typeof config === 'object' && config ? config : {})
-      }
-
-      if (!data) {
-        data = new Modal(this, _config)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config](relatedTarget)
-      } else if (_config.show) {
-        data.show(relatedTarget)
-      }
-    })
   }
 }
 

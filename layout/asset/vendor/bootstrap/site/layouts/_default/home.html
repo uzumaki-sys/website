@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    {{ partial "header" . }}
-  </head>
-  <body>
-    {{ partial "skippy" . }}
+<head>
+  {{ partial "header" . }}
+</head>
+<body>
+{{ partial "skippy" . }}
 
-    {{ partial "docs-navbar" . }}
+{{ partial "docs-navbar" . }}
 
-    {{ partial "home/masthead" . }}
-    {{ partial "home/masthead-followup" . }}
+{{ partial "home/masthead" . }}
+{{ partial "home/masthead-followup" . }}
 
-    {{ .Content }}
+{{ .Content }}
 
-    {{ partial "footer" . }}
-    {{ partial "scripts" . }}
-  </body>
+{{ partial "footer" . }}
+{{ partial "scripts" . }}
+</body>
 </html>

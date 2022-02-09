@@ -43,6 +43,33 @@ class Alert {
     return VERSION
   }
 
+  // Static
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
+
+      if (!data) {
+        data = new Alert(this)
+        $element.data(DATA_KEY, data)
+      }
+
+      if (config === 'close') {
+        data[config](this)
+      }
+    })
+  }
+
+  static _handleDismiss(alertInstance) {
+    return function (event) {
+      if (event) {
+        event.preventDefault()
+      }
+
+      alertInstance.close(this)
+    }
+  }
+
   // Public
   close(element) {
     let rootElement = this._element
@@ -107,33 +134,6 @@ class Alert {
       .detach()
       .trigger(EVENT_CLOSED)
       .remove()
-  }
-
-  // Static
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      const $element = $(this)
-      let data = $element.data(DATA_KEY)
-
-      if (!data) {
-        data = new Alert(this)
-        $element.data(DATA_KEY, data)
-      }
-
-      if (config === 'close') {
-        data[config](this)
-      }
-    })
-  }
-
-  static _handleDismiss(alertInstance) {
-    return function (event) {
-      if (event) {
-        event.preventDefault()
-      }
-
-      alertInstance.close(this)
-    }
   }
 }
 

@@ -5,11 +5,14 @@
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./tooltip.js')) :
-  typeof define === 'function' && define.amd ? define(['jquery', './tooltip'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.jQuery, global.Tooltip));
-})(this, (function ($, Tooltip) { 'use strict';
+    typeof define === 'function' && define.amd ? define(['jquery', './tooltip'], factory) :
+      (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.jQuery, global.Tooltip));
+})(this, (function ($, Tooltip) {
+  'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  function _interopDefaultLegacy(e) {
+    return e && typeof e === 'object' && 'default' in e ? e : {'default': e};
+  }
 
   var $__default = /*#__PURE__*/_interopDefaultLegacy($);
   var Tooltip__default = /*#__PURE__*/_interopDefaultLegacy(Tooltip);
@@ -188,9 +191,9 @@
     _createClass(Popover, null, [{
       key: "VERSION",
       get: // Getters
-      function get() {
-        return VERSION;
-      }
+        function get() {
+          return VERSION;
+        }
     }, {
       key: "Default",
       get: function get() {

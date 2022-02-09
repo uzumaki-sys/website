@@ -42,7 +42,9 @@
 
   > .form-control,
   > .custom-select {
-    &:not(:first-child) { @include border-left-radius(0); }
+    &:not(:first-child) {
+      @include border-left-radius(0);
+    }
   }
 
   // Custom file inputs have more complex markup, thus requiring different
@@ -52,8 +54,13 @@
     align-items: center;
 
     &:not(:last-child) .custom-file-label,
-    &:not(:last-child) .custom-file-label::after { @include border-right-radius(0); }
-    &:not(:first-child) .custom-file-label { @include border-left-radius(0); }
+    &:not(:last-child) .custom-file-label::after {
+      @include border-right-radius(0);
+    }
+
+    &:not(:first-child) .custom-file-label {
+      @include border-left-radius(0);
+    }
   }
 
   &:not(.has-validation) {
@@ -106,8 +113,13 @@
   }
 }
 
-.input-group-prepend { margin-right: -$input-border-width; }
-.input-group-append { margin-left: -$input-border-width; }
+.input-group-prepend {
+  margin-right: -$input-border-width;
+}
+
+.input-group-append {
+  margin-left: -$input-border-width;
+}
 
 
 // Textual addons

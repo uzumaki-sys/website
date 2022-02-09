@@ -1,15 +1,16 @@
 ---
-layout: docs
-title: Visibility
-description: Control the visibility, without modifying the display, of elements with visibility utilities.
-group: utilities
+layout: docs title: Visibility description: Control the visibility, without modifying the display, of elements with
+visibility utilities. group: utilities
 ---
 
-Set the `visibility` of elements with our visibility utilities. These utility classes do not modify the `display` value at all and do not affect layout – `.invisible` elements still take up space in the page. Content will be hidden both visually and for assistive technology/screen reader users.
+Set the `visibility` of elements with our visibility utilities. These utility classes do not modify the `display` value
+at all and do not affect layout – `.invisible` elements still take up space in the page. Content will be hidden both
+visually and for assistive technology/screen reader users.
 
 Apply `.visible` or `.invisible` as needed.
 
 ```html
+
 <div class="visible">...</div>
 <div class="invisible">...</div>
 ```
@@ -19,6 +20,7 @@ Apply `.visible` or `.invisible` as needed.
 .visible {
   visibility: visible !important;
 }
+
 .invisible {
   visibility: hidden !important;
 }
@@ -28,6 +30,7 @@ Apply `.visible` or `.invisible` as needed.
 .element {
   @include invisible(visible);
 }
+
 .element {
   @include invisible(hidden);
 }

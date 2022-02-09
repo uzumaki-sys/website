@@ -32,9 +32,9 @@ const Default = {
   trigger: 'click',
   content: '',
   template: '<div class="popover" role="tooltip">' +
-              '<div class="arrow"></div>' +
-              '<h3 class="popover-header"></h3>' +
-              '<div class="popover-body"></div></div>'
+    '<div class="arrow"></div>' +
+    '<h3 class="popover-header"></h3>' +
+    '<div class="popover-body"></div></div>'
 }
 
 const DefaultType = {
@@ -89,6 +89,31 @@ class Popover extends Tooltip {
     return DefaultType
   }
 
+  // Static
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _config = typeof config === 'object' ? config : null
+
+      if (!data && /dispose|hide/.test(config)) {
+        return
+      }
+
+      if (!data) {
+        data = new Popover(this, _config)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config]()
+      }
+    })
+  }
+
   // Overrides
   isWithContent() {
     return this.getTitle() || this._getContent()
@@ -130,31 +155,6 @@ class Popover extends Tooltip {
     if (tabClass !== null && tabClass.length > 0) {
       $tip.removeClass(tabClass.join(''))
     }
-  }
-
-  // Static
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _config = typeof config === 'object' ? config : null
-
-      if (!data && /dispose|hide/.test(config)) {
-        return
-      }
-
-      if (!data) {
-        data = new Popover(this, _config)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
-      }
-    })
   }
 }
 

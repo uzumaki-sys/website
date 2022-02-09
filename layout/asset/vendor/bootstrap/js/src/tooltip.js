@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { DefaultWhitelist, sanitizeHtml } from './tools/sanitizer'
+import {DefaultWhitelist, sanitizeHtml} from './tools/sanitizer'
 import $ from 'jquery'
 import Popper from 'popper.js'
 import Util from './util'
@@ -48,8 +48,8 @@ const AttachmentMap = {
 const Default = {
   animation: true,
   template: '<div class="tooltip" role="tooltip">' +
-                    '<div class="arrow"></div>' +
-                    '<div class="tooltip-inner"></div></div>',
+    '<div class="arrow"></div>' +
+    '<div class="tooltip-inner"></div></div>',
   trigger: 'hover focus',
   title: '',
   delay: 0,
@@ -152,6 +152,32 @@ class Tooltip {
 
   static get DefaultType() {
     return DefaultType
+  }
+
+  // Static
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
+      const _config = typeof config === 'object' && config
+
+      if (!data && /dispose|hide/.test(config)) {
+        return
+      }
+
+      if (!data) {
+        data = new Tooltip(this, _config)
+        $element.data(DATA_KEY, data)
+      }
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config]()
+      }
+    })
   }
 
   // Public
@@ -564,7 +590,7 @@ class Tooltip {
     if (event) {
       context._activeTrigger[
         event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER
-      ] = true
+        ] = true
     }
 
     if ($(context.getTipElement()).hasClass(CLASS_NAME_SHOW) || context._hoverState === HOVER_STATE_SHOW) {
@@ -603,7 +629,7 @@ class Tooltip {
     if (event) {
       context._activeTrigger[
         event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER
-      ] = false
+        ] = false
     }
 
     if (context._isWithActiveTrigger()) {
@@ -721,32 +747,6 @@ class Tooltip {
     this.hide()
     this.show()
     this.config.animation = initConfigAnimation
-  }
-
-  // Static
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      const $element = $(this)
-      let data = $element.data(DATA_KEY)
-      const _config = typeof config === 'object' && config
-
-      if (!data && /dispose|hide/.test(config)) {
-        return
-      }
-
-      if (!data) {
-        data = new Tooltip(this, _config)
-        $element.data(DATA_KEY, data)
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
-      }
-    })
   }
 }
 

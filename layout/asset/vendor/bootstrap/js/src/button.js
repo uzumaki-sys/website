@@ -24,7 +24,7 @@ const CLASS_NAME_FOCUS = 'focus'
 
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_FOCUS_BLUR_DATA_API = `focus${EVENT_KEY}${DATA_API_KEY} ` +
-                          `blur${EVENT_KEY}${DATA_API_KEY}`
+  `blur${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 
 const SELECTOR_DATA_TOGGLE_CARROT = '[data-toggle^="button"]'
@@ -48,6 +48,25 @@ class Button {
   // Getters
   static get VERSION() {
     return VERSION
+  }
+
+  // Static
+  static _jQueryInterface(config, avoidTriggerChange) {
+    return this.each(function () {
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
+
+      if (!data) {
+        data = new Button(this)
+        $element.data(DATA_KEY, data)
+      }
+
+      data.shouldAvoidTriggerChange = avoidTriggerChange
+
+      if (config === 'toggle') {
+        data[config]()
+      }
+    })
   }
 
   // Public
@@ -102,25 +121,6 @@ class Button {
   dispose() {
     $.removeData(this._element, DATA_KEY)
     this._element = null
-  }
-
-  // Static
-  static _jQueryInterface(config, avoidTriggerChange) {
-    return this.each(function () {
-      const $element = $(this)
-      let data = $element.data(DATA_KEY)
-
-      if (!data) {
-        data = new Button(this)
-        $element.data(DATA_KEY, data)
-      }
-
-      data.shouldAvoidTriggerChange = avoidTriggerChange
-
-      if (config === 'toggle') {
-        data[config]()
-      }
-    })
   }
 }
 

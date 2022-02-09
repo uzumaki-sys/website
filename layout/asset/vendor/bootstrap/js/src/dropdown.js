@@ -103,6 +103,160 @@ class Dropdown {
     return DefaultType
   }
 
+  // Static
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _config = typeof config === 'object' ? config : null
+
+      if (!data) {
+        data = new Dropdown(this, _config)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config]()
+      }
+    })
+  }
+
+  static _clearMenus(event) {
+    if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH ||
+      event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
+      return
+    }
+
+    const toggles = [].slice.call(document.querySelectorAll(SELECTOR_DATA_TOGGLE))
+
+    for (let i = 0, len = toggles.length; i < len; i++) {
+      const parent = Dropdown._getParentFromElement(toggles[i])
+      const context = $(toggles[i]).data(DATA_KEY)
+      const relatedTarget = {
+        relatedTarget: toggles[i]
+      }
+
+      if (event && event.type === 'click') {
+        relatedTarget.clickEvent = event
+      }
+
+      if (!context) {
+        continue
+      }
+
+      const dropdownMenu = context._menu
+      if (!$(parent).hasClass(CLASS_NAME_SHOW)) {
+        continue
+      }
+
+      if (event && (event.type === 'click' &&
+          /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) &&
+        $.contains(parent, event.target)) {
+        continue
+      }
+
+      const hideEvent = $.Event(EVENT_HIDE, relatedTarget)
+      $(parent).trigger(hideEvent)
+      if (hideEvent.isDefaultPrevented()) {
+        continue
+      }
+
+      // If this is a touch-enabled device we remove the extra
+      // empty mouseover listeners we added for iOS support
+      if ('ontouchstart' in document.documentElement) {
+        $(document.body).children().off('mouseover', null, $.noop)
+      }
+
+      toggles[i].setAttribute('aria-expanded', 'false')
+
+      if (context._popper) {
+        context._popper.destroy()
+      }
+
+      $(dropdownMenu).removeClass(CLASS_NAME_SHOW)
+      $(parent)
+        .removeClass(CLASS_NAME_SHOW)
+        .trigger($.Event(EVENT_HIDDEN, relatedTarget))
+    }
+  }
+
+  static _getParentFromElement(element) {
+    let parent
+    const selector = Util.getSelectorFromElement(element)
+
+    if (selector) {
+      parent = document.querySelector(selector)
+    }
+
+    return parent || element.parentNode
+  }
+
+  // eslint-disable-next-line complexity
+  static _dataApiKeydownHandler(event) {
+    // If not input/textarea:
+    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
+    // If input/textarea:
+    //  - If space key => not a dropdown command
+    //  - If key is other than escape
+    //    - If key is not up or down => not a dropdown command
+    //    - If trigger inside the menu => not a dropdown command
+    if (/input|textarea/i.test(event.target.tagName) ?
+      event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
+      (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
+        $(event.target).closest(SELECTOR_MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
+      return
+    }
+
+    if (this.disabled || $(this).hasClass(CLASS_NAME_DISABLED)) {
+      return
+    }
+
+    const parent = Dropdown._getParentFromElement(this)
+    const isActive = $(parent).hasClass(CLASS_NAME_SHOW)
+
+    if (!isActive && event.which === ESCAPE_KEYCODE) {
+      return
+    }
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    if (!isActive || (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
+      if (event.which === ESCAPE_KEYCODE) {
+        $(parent.querySelector(SELECTOR_DATA_TOGGLE)).trigger('focus')
+      }
+
+      $(this).trigger('click')
+      return
+    }
+
+    const items = [].slice.call(parent.querySelectorAll(SELECTOR_VISIBLE_ITEMS))
+      .filter(item => $(item).is(':visible'))
+
+    if (items.length === 0) {
+      return
+    }
+
+    let index = items.indexOf(event.target)
+
+    if (event.which === ARROW_UP_KEYCODE && index > 0) { // Up
+      index--
+    }
+
+    if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) { // Down
+      index++
+    }
+
+    if (index < 0) {
+      index = 0
+    }
+
+    items[index].focus()
+  }
+
   // Public
   toggle() {
     if (this._element.disabled || $(this._element).hasClass(CLASS_NAME_DISABLED)) {
@@ -172,7 +326,7 @@ class Dropdown {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement &&
-        $(parent).closest(SELECTOR_NAVBAR_NAV).length === 0) {
+      $(parent).closest(SELECTOR_NAVBAR_NAV).length === 0) {
       $(document.body).children().on('mouseover', null, $.noop)
     }
 
@@ -335,160 +489,6 @@ class Dropdown {
       ...popperConfig,
       ...this._config.popperConfig
     }
-  }
-
-  // Static
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _config = typeof config === 'object' ? config : null
-
-      if (!data) {
-        data = new Dropdown(this, _config)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
-      }
-    })
-  }
-
-  static _clearMenus(event) {
-    if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH ||
-      event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
-      return
-    }
-
-    const toggles = [].slice.call(document.querySelectorAll(SELECTOR_DATA_TOGGLE))
-
-    for (let i = 0, len = toggles.length; i < len; i++) {
-      const parent = Dropdown._getParentFromElement(toggles[i])
-      const context = $(toggles[i]).data(DATA_KEY)
-      const relatedTarget = {
-        relatedTarget: toggles[i]
-      }
-
-      if (event && event.type === 'click') {
-        relatedTarget.clickEvent = event
-      }
-
-      if (!context) {
-        continue
-      }
-
-      const dropdownMenu = context._menu
-      if (!$(parent).hasClass(CLASS_NAME_SHOW)) {
-        continue
-      }
-
-      if (event && (event.type === 'click' &&
-          /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) &&
-          $.contains(parent, event.target)) {
-        continue
-      }
-
-      const hideEvent = $.Event(EVENT_HIDE, relatedTarget)
-      $(parent).trigger(hideEvent)
-      if (hideEvent.isDefaultPrevented()) {
-        continue
-      }
-
-      // If this is a touch-enabled device we remove the extra
-      // empty mouseover listeners we added for iOS support
-      if ('ontouchstart' in document.documentElement) {
-        $(document.body).children().off('mouseover', null, $.noop)
-      }
-
-      toggles[i].setAttribute('aria-expanded', 'false')
-
-      if (context._popper) {
-        context._popper.destroy()
-      }
-
-      $(dropdownMenu).removeClass(CLASS_NAME_SHOW)
-      $(parent)
-        .removeClass(CLASS_NAME_SHOW)
-        .trigger($.Event(EVENT_HIDDEN, relatedTarget))
-    }
-  }
-
-  static _getParentFromElement(element) {
-    let parent
-    const selector = Util.getSelectorFromElement(element)
-
-    if (selector) {
-      parent = document.querySelector(selector)
-    }
-
-    return parent || element.parentNode
-  }
-
-  // eslint-disable-next-line complexity
-  static _dataApiKeydownHandler(event) {
-    // If not input/textarea:
-    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
-    // If input/textarea:
-    //  - If space key => not a dropdown command
-    //  - If key is other than escape
-    //    - If key is not up or down => not a dropdown command
-    //    - If trigger inside the menu => not a dropdown command
-    if (/input|textarea/i.test(event.target.tagName) ?
-      event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
-      (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
-        $(event.target).closest(SELECTOR_MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
-      return
-    }
-
-    if (this.disabled || $(this).hasClass(CLASS_NAME_DISABLED)) {
-      return
-    }
-
-    const parent = Dropdown._getParentFromElement(this)
-    const isActive = $(parent).hasClass(CLASS_NAME_SHOW)
-
-    if (!isActive && event.which === ESCAPE_KEYCODE) {
-      return
-    }
-
-    event.preventDefault()
-    event.stopPropagation()
-
-    if (!isActive || (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
-      if (event.which === ESCAPE_KEYCODE) {
-        $(parent.querySelector(SELECTOR_DATA_TOGGLE)).trigger('focus')
-      }
-
-      $(this).trigger('click')
-      return
-    }
-
-    const items = [].slice.call(parent.querySelectorAll(SELECTOR_VISIBLE_ITEMS))
-      .filter(item => $(item).is(':visible'))
-
-    if (items.length === 0) {
-      return
-    }
-
-    let index = items.indexOf(event.target)
-
-    if (event.which === ARROW_UP_KEYCODE && index > 0) { // Up
-      index--
-    }
-
-    if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) { // Down
-      index++
-    }
-
-    if (index < 0) {
-      index = 0
-    }
-
-    items[index].focus()
   }
 }
 

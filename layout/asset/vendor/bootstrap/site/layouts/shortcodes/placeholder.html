@@ -1,14 +1,14 @@
 {{- /*
-  Usage: `placeholder args`
+Usage: `placeholder args`
 
-  `args` are all optional and can be one of the following:
-    * title: Used in the SVG `title` tag - default: "Placeholder"
-    * text: The text to show in the image - default: "width x height"
-    * class: Class to add to the `svg` - default: "bd-placeholder-img"
-    * color: The text color (foreground) - default: "#dee2e6"
-    * background: The background color - default: "#868e96"
-    * width: default: "100%"
-    * height: default: "180px"
+`args` are all optional and can be one of the following:
+* title: Used in the SVG `title` tag - default: "Placeholder"
+* text: The text to show in the image - default: "width x height"
+* class: Class to add to the `svg` - default: "bd-placeholder-img"
+* color: The text color (foreground) - default: "#dee2e6"
+* background: The background color - default: "#868e96"
+* width: default: "100%"
+* height: default: "180px"
 */ -}}
 
 {{- $grays := $.Site.Data.grays -}}
@@ -26,8 +26,15 @@
 {{- $show_title := not (eq $title "false") -}}
 {{- $show_text := not (eq $text "false") -}}
 
-<svg class="bd-placeholder-img{{ with $class }} {{ . }}{{ end }}" width="{{ $width }}" height="{{ $height }}" xmlns="http://www.w3.org/2000/svg"{{ if (or $show_title $show_text) }} role="img" aria-label="{{ if $show_title }}{{ $title }}{{ if $show_text }}: {{ end }}{{ end }}{{ if ($show_text) }}{{ $text }}{{ end }}"{{ else }} aria-hidden="true"{{ end }} preserveAspectRatio="xMidYMid slice" focusable="false">
+<svg $show_text) $show_title (or
+     aria-hidden="true"
+     aria-label="{{ if $show_title }}{{ $title }}{{ if $show_text }}: {{ end }}{{ end }}{{ if ($show_text) }}{{ $text }}{{ end }}"
+     class="bd-placeholder-img{{ with $class }} {{ . }}{{ end }}" else end focusable="false" height="{{ $height }}" if
+     preserveAspectRatio="xMidYMid slice"
+     role="img" width="{{ $width }}" xmlns="http://www.w3.org/2000/svg" {{ {{ {{ }} }} }}>
   {{- if $show_title }}<title>{{ $title }}</title>{{ end -}}
-  <rect width="100%" height="100%" fill="{{ $background }}"/>
-  {{- if $show_text }}<text x="50%" y="50%" fill="{{ $color }}" dy=".3em">{{ $text }}</text>{{ end -}}
+  <rect fill="{{ $background }}" height="100%" width="100%"/>
+  {{- if $show_text }}
+  <text dy=".3em" fill="{{ $color }}" x="50%" y="50%">{{ $text }}</text>
+  {{ end -}}
 </svg>

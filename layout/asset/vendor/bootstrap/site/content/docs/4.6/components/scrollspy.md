@@ -1,22 +1,22 @@
 ---
-layout: docs
-title: Scrollspy
-description: Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
-group: components
-toc: true
+layout: docs title: Scrollspy description: Automatically update Bootstrap navigation or list group components based on
+scroll position to indicate which link is currently active in the viewport. group: components toc: true
 ---
 
 ## How it works
 
 Scrollspy has a few requirements to function properly:
 
-- If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
-- It must be used on a Bootstrap [nav component]({{< docsref "/components/navs" >}}) or [list group]({{< docsref "/components/list-group" >}}).
+- If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "
+  /getting-started/javascript#util" >}}).
+- It must be used on a Bootstrap [nav component]({{< docsref "/components/navs" >}}) or [list group]({{< docsref "
+  /components/list-group" >}}).
 - Scrollspy requires `position: relative;` on the element you're spying on, usually the `<body>`.
 - When spying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
 - Anchors (`<a>`) are required and must point to an element with that `id`.
 
-When successfully implemented, your nav or list group will update accordingly, moving the `.active` class from one item to the next based on their associated targets.
+When successfully implemented, your nav or list group will update accordingly, moving the `.active` class from one item
+to the next based on their associated targets.
 
 ## Example in navbar
 
@@ -59,6 +59,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
 </div>
 
 ```html
+
 <nav id="navbar-example2" class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav nav-pills">
@@ -69,7 +70,8 @@ Scroll the area below the navbar and watch the active class change. The dropdown
       <a class="nav-link" href="#mdo">@mdo</a>
     </li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+         aria-expanded="false">Dropdown</a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#one">one</a>
         <a class="dropdown-item" href="#two">two</a>
@@ -95,7 +97,8 @@ Scroll the area below the navbar and watch the active class change. The dropdown
 
 ## Example with nested nav
 
-Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its parents will also be `.active`. Scroll the area next to the navbar and watch the active class change.
+Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its parents will also be `.active`. Scroll
+the area next to the navbar and watch the active class change.
 
 <div class="bd-example">
   <div class="row">
@@ -139,6 +142,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
 </div>
 
 ```html
+
 <nav id="navbar-example3" class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <nav class="nav nav-pills flex-column">
@@ -204,6 +208,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
 </div>
 
 ```html
+
 <div id="list-example" class="list-group">
   <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
   <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
@@ -226,7 +231,9 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
 
 ### Via data attributes
 
-To easily add scrollspy behavior to your topbar navigation, add `data-spy="scroll"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-target` attribute with the ID or class of the parent element of any Bootstrap `.nav` component.
+To easily add scrollspy behavior to your topbar navigation, add `data-spy="scroll"` to the element you want to spy on (
+most typically this would be the `<body>`). Then add the `data-target` attribute with the ID or class of the parent
+element of any Bootstrap `.nav` component.
 
 ```css
 body {
@@ -235,14 +242,15 @@ body {
 ```
 
 ```html
+
 <body data-spy="scroll" data-target="#navbar-example">
-  ...
-  <div id="navbar-example">
-    <ul class="nav nav-tabs" role="tablist">
-      ...
-    </ul>
-  </div>
-  ...
+...
+<div id="navbar-example">
+  <ul class="nav nav-tabs" role="tablist">
+    ...
+  </ul>
+</div>
+...
 </body>
 ```
 
@@ -251,26 +259,29 @@ body {
 After adding `position: relative;` in your CSS, call the scrollspy via JavaScript:
 
 ```js
-$('body').scrollspy({ target: '#navbar-example' })
+$('body').scrollspy({target: '#navbar-example'})
 ```
 
 {{< callout danger >}}
+
 #### Resolvable ID targets required
 
-Navbar links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`.
-{{< /callout >}}
+Navbar links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in
+the DOM like `<div id="home"></div>`. {{< /callout >}}
 
 {{< callout info >}}
+
 #### Non-`:visible` target elements ignored
 
-Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
-{{< /callout >}}
+Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored
+and their corresponding nav items will never be highlighted. {{< /callout >}}
 
 ### Methods
 
 #### `.scrollspy('refresh')`
 
-When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
+When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh
+method like so:
 
 ```js
 $('[data-spy="scroll"]').each(function () {
@@ -284,7 +295,8 @@ Destroys an element's scrollspy.
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-offset=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as
+in `data-offset=""`.
 
 <table class="table table-bordered table-striped">
   <thead>

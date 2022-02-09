@@ -5,11 +5,14 @@
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
-  typeof define === 'function' && define.amd ? define(['jquery'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Button = factory(global.jQuery));
-})(this, (function ($) { 'use strict';
+    typeof define === 'function' && define.amd ? define(['jquery'], factory) :
+      (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Button = factory(global.jQuery));
+})(this, (function ($) {
+  'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  function _interopDefaultLegacy(e) {
+    return e && typeof e === 'object' && 'default' in e ? e : {'default': e};
+  }
 
   var $__default = /*#__PURE__*/_interopDefaultLegacy($);
 

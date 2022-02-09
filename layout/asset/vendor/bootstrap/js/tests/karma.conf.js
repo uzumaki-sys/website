@@ -4,7 +4,7 @@
 
 const path = require('path')
 const ip = require('ip')
-const { browsers, browsersKeys } = require('./browsers')
+const {browsers, browsersKeys} = require('./browsers')
 
 const USE_OLD_JQUERY = Boolean(process.env.USE_OLD_JQUERY)
 const BUNDLE = Boolean(process.env.BUNDLE)

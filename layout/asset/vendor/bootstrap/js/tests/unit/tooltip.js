@@ -335,7 +335,8 @@ $(function () {
     assert.expect(9)
     var $tooltip = $('<div/>')
       .bootstrapTooltip()
-      .on('click.foo', function () {})
+      .on('click.foo', function () {
+      })
 
     assert.ok($tooltip.data('bs.tooltip'), 'tooltip has data')
     assert.ok($._data($tooltip[0], 'events').mouseover, 'tooltip has mouseover event')
@@ -840,14 +841,14 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
     var templateHTML = '<div id="modal-test" class="modal">' +
-                          '<div class="modal-dialog" role="document">' +
-                            '<div class="modal-content">' +
-                              '<div class="modal-body">' +
-                                '<a id="tooltipTest" href="#" data-toggle="tooltip" title="Some tooltip text!">Tooltip</a>' +
-                              '</div>' +
-                            '</div>' +
-                          '</div>' +
-                        '</div>'
+      '<div class="modal-dialog" role="document">' +
+      '<div class="modal-content">' +
+      '<div class="modal-body">' +
+      '<a id="tooltipTest" href="#" data-toggle="tooltip" title="Some tooltip text!">Tooltip</a>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>'
 
     $(templateHTML).appendTo('#qunit-fixture')
     $('#tooltipTest')

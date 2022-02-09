@@ -1,20 +1,19 @@
 ---
-layout: docs
-title: Embeds
-description: Create responsive video or slideshow embeds based on the width of the parent by creating an intrinsic ratio that scales on any device.
-group: utilities
-toc: true
+layout: docs title: Embeds description: Create responsive video or slideshow embeds based on the width of the parent by
+creating an intrinsic ratio that scales on any device. group: utilities toc: true
 ---
 
 ## About
 
-Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` elements; optionally use an explicit descendant class `.embed-responsive-item` when you want to match the styling for other attributes.
+Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` elements; optionally use an explicit
+descendant class `.embed-responsive-item` when you want to match the styling for other attributes.
 
 **Pro-Tip!** You don't need to include `frameborder="0"` in your `<iframe>`s as we override that for you.
 
 ## Example
 
-Wrap any embed like an `<iframe>` in a parent element with `.embed-responsive` and an aspect ratio. The `.embed-responsive-item` isn't strictly required, but we encourage it.
+Wrap any embed like an `<iframe>` in a parent element with `.embed-responsive` and an aspect ratio.
+The `.embed-responsive-item` isn't strictly required, but we encourage it.
 
 {{< example >}}
 <div class="embed-responsive embed-responsive-16by9">
@@ -48,13 +47,14 @@ Aspect ratios can be customized with modifier classes. By default the following 
 </div>
 ```
 
-Within `_variables.scss`, you can change the aspect ratios you want to use. Here's an example of the `$embed-responsive-aspect-ratios` list:
+Within `_variables.scss`, you can change the aspect ratios you want to use. Here's an example of
+the `$embed-responsive-aspect-ratios` list:
 
 ```scss
 $embed-responsive-aspect-ratios: (
-  (21 9),
-  (16 9),
-  (4 3),
-  (1 1)
+    (21 9),
+    (16 9),
+    (4 3),
+    (1 1)
 ) !default;
 ```

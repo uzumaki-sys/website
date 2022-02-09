@@ -1,25 +1,25 @@
 ---
-layout: docs
-title: Icons
-description: Guidance and suggestions for using external icon libraries with Bootstrap.
-group: extend
+layout: docs title: Icons description: Guidance and suggestions for using external icon libraries with Bootstrap. group:
+extend
 ---
 
 ## Bootstrap Icons
 
-While you won't find a built-in icon library in Bootstrap, our separate [Bootstrap Icons]({{< param icons >}}) projects is a growing set of open source SVGs you can use. While they're designed first and foremost to work with our components and documentation, you can use them in any project.
+While you won't find a built-in icon library in Bootstrap, our separate [Bootstrap Icons]({{< param icons >}}) projects
+is a growing set of open source SVGs you can use. While they're designed first and foremost to work with our components
+and documentation, you can use them in any project.
 
 <a href="{{< param icons >}}" class="btn btn-bd-primary">Get Bootstrap Icons</a>
 
-<img class="img-fluid mt-3 mx-auto" srcset="/docs/{{< param docs_version >}}/assets/img/bootstrap-icons.png,
-                                            /docs/{{< param docs_version >}}/assets/img/bootstrap-icons@2x.png 2x"
-                                            src="/docs/{{< param docs_version >}}/assets/img/bootstrap-icons.png"
-                                            alt="Bootstrap Icons" width="966" height="600" loading="lazy">
-
+<img class="img-fluid mt-3 mx-auto" srcset="/docs/{{< param docs_version >}}/assets/img/bootstrap-icons.png, /docs/{{<
+param docs_version >}}/assets/img/bootstrap-icons@2x.png 2x"
+src="/docs/{{< param docs_version >}}/assets/img/bootstrap-icons.png"
+alt="Bootstrap Icons" width="966" height="600" loading="lazy">
 
 ## Additional icon sets
 
-In addition to Bootstrap Icons, we have a handful of alternative icon libraries for you to choose from. While most icon sets include multiple file formats, we prefer SVG implementations for their improved accessibility and vector support.
+In addition to Bootstrap Icons, we have a handful of alternative icon libraries for you to choose from. While most icon
+sets include multiple file formats, we prefer SVG implementations for their improved accessibility and vector support.
 
 ### Preferred
 

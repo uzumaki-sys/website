@@ -1,8 +1,6 @@
 ---
-layout: docs
-title: Overflow
-description: Use these shorthand utilities for quickly configuring how content overflows an element.
-group: utilities
+layout: docs title: Overflow description: Use these shorthand utilities for quickly configuring how content overflows an
+element. group: utilities
 ---
 
 Barebones `overflow` functionality is provided for two values by default, and they are not responsive.
@@ -17,8 +15,10 @@ Barebones `overflow` functionality is provided for two values by default, and th
 </div>
 
 ```html
+
 <div class="overflow-auto">...</div>
 <div class="overflow-hidden">...</div>
 ```
 
-Using Sass variables, you may customize the overflow utilities by changing the `$overflows` variable in `_variables.scss`.
+Using Sass variables, you may customize the overflow utilities by changing the `$overflows` variable
+in `_variables.scss`.

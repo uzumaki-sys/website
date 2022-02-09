@@ -60,8 +60,8 @@ class ScrollSpy {
     this._scrollElement = element.tagName === 'BODY' ? window : element
     this._config = this._getConfig(config)
     this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS},` +
-                          `${this._config.target} ${SELECTOR_LIST_ITEMS},` +
-                          `${this._config.target} ${SELECTOR_DROPDOWN_ITEMS}`
+      `${this._config.target} ${SELECTOR_LIST_ITEMS},` +
+      `${this._config.target} ${SELECTOR_DROPDOWN_ITEMS}`
     this._offsets = []
     this._targets = []
     this._activeTarget = null
@@ -80,6 +80,27 @@ class ScrollSpy {
 
   static get Default() {
     return Default
+  }
+
+  // Static
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _config = typeof config === 'object' && config
+
+      if (!data) {
+        data = new ScrollSpy(this, _config)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config]()
+      }
+    })
   }
 
   // Public
@@ -210,9 +231,9 @@ class ScrollSpy {
 
     for (let i = this._offsets.length; i--;) {
       const isActiveTarget = this._activeTarget !== this._targets[i] &&
-          scrollTop >= this._offsets[i] &&
-          (typeof this._offsets[i + 1] === 'undefined' ||
-              scrollTop < this._offsets[i + 1])
+        scrollTop >= this._offsets[i] &&
+        (typeof this._offsets[i + 1] === 'undefined' ||
+          scrollTop < this._offsets[i + 1])
 
       if (isActiveTarget) {
         this._activate(this._targets[i])
@@ -260,27 +281,6 @@ class ScrollSpy {
     [].slice.call(document.querySelectorAll(this._selector))
       .filter(node => node.classList.contains(CLASS_NAME_ACTIVE))
       .forEach(node => node.classList.remove(CLASS_NAME_ACTIVE))
-  }
-
-  // Static
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _config = typeof config === 'object' && config
-
-      if (!data) {
-        data = new ScrollSpy(this, _config)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
-      }
-    })
   }
 }
 

@@ -1,22 +1,24 @@
 ---
-layout: docs
-title: Typography
-description: Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.
-group: content
-toc: true
+layout: docs title: Typography description: Documentation and examples for Bootstrap typography, including global
+settings, headings, body text, lists, and more. group: content toc: true
 ---
 
 ## Global settings
 
-Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the [textual utility classes]({{< docsref "/utilities/text" >}}).
+Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out
+the [textual utility classes]({{< docsref "/utilities/text" >}}).
 
-- Use a [native font stack]({{< docsref "/content/reboot#native-font-stack" >}}) that selects the best `font-family` for each OS and device.
-- For a more inclusive and accessible type scale, we use the browser's default root `font-size` (typically 16px) so visitors can customize their browser defaults as needed.
-- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
+- Use a [native font stack]({{< docsref "/content/reboot#native-font-stack" >}}) that selects the best `font-family` for
+  each OS and device.
+- For a more inclusive and accessible type scale, we use the browser's default root `font-size` (typically 16px) so
+  visitors can customize their browser defaults as needed.
+- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to
+  the `<body>`.
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`.
 - Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
-These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`. Make sure to set `$font-size-base` in `rem`.
+These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`. Make sure to
+set `$font-size-base` in `rem`.
 
 ## Headings
 
@@ -78,7 +80,8 @@ All HTML headings, `<h1>` through `<h6>`, are available.
 <h6>h6. Bootstrap heading</h6>
 ```
 
-`.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.
+`.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but cannot use
+the associated HTML element.
 
 {{< example >}}
 <p class="h1">h1. Bootstrap heading</p>
@@ -95,14 +98,16 @@ Use the included utility classes to recreate the small secondary heading text fr
 
 {{< example >}}
 <h3>
-  Fancy display heading
-  <small class="text-muted">With faded secondary text</small>
+Fancy display heading
+<small class="text-muted">With faded secondary text</small>
 </h3>
 {{< /example >}}
 
 ## Display headings
 
-Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style. Keep in mind these headings are not responsive by default, but it's possible to enable [responsive font sizes](#responsive-font-sizes).
+Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to
+stand out, consider using a **display heading**—a larger, slightly more opinionated heading style. Keep in mind these
+headings are not responsive by default, but it's possible to enable [responsive font sizes](#responsive-font-sizes).
 
 <div class="bd-example bd-example-type">
   <table class="table">
@@ -155,17 +160,22 @@ Styling for common inline HTML5 elements.
 <p><em>This line rendered as italicized text.</em></p>
 {{< /example >}}
 
-`.mark` and `.small` classes are also available to apply the same styles as `<mark>` and `<small>` while avoiding any unwanted semantic implications that the tags would bring.
+`.mark` and `.small` classes are also available to apply the same styles as `<mark>` and `<small>` while avoiding any
+unwanted semantic implications that the tags would bring.
 
-While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
+While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without
+conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities]({{< docsref "/utilities/text" >}}) and [color utilities]({{< docsref "/utilities/colors" >}}).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{< docsref "/utilities/text" >}})
+and [color utilities]({{< docsref "/utilities/colors" >}}).
 
 ## Abbreviations
 
-Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of assistive technologies.
+Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover.
+Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of
+assistive technologies.
 
 Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
@@ -176,7 +186,8 @@ Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
 ## Blockquotes
 
-For quoting blocks of content from another source within your document. Wrap `<blockquote class="blockquote">` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.
+For quoting blocks of content from another source within your document. Wrap `<blockquote class="blockquote">` around
+any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.
 
 {{< example >}}
 <blockquote class="blockquote">
@@ -217,7 +228,8 @@ Use text utilities as needed to change the alignment of your blockquote.
 
 ### Unstyled
 
-Remove the default `list-style` and left margin on list items (immediate children only). **This only applies to immediate children list items**, meaning you will need to add the class for any nested lists as well.
+Remove the default `list-style` and left margin on list items (immediate children only). **This only applies to
+immediate children list items**, meaning you will need to add the class for any nested lists as well.
 
 {{< example >}}
 <ul class="list-unstyled">
@@ -238,7 +250,8 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 ### Inline
 
-Remove a list's bullets and apply some light `margin` with a combination of two classes, `.list-inline` and `.list-inline-item`.
+Remove a list's bullets and apply some light `margin` with a combination of two classes, `.list-inline`
+and `.list-inline-item`.
 
 {{< example >}}
 <ul class="list-inline">
@@ -250,7 +263,8 @@ Remove a list's bullets and apply some light `margin` with a combination of two 
 
 ### Description list alignment
 
-Align terms and descriptions horizontally by using our grid system's predefined classes (or semantic mixins). For longer terms, you can optionally add a `.text-truncate` class to truncate the text with an ellipsis.
+Align terms and descriptions horizontally by using our grid system's predefined classes (or semantic mixins). For longer
+terms, you can optionally add a `.text-truncate` class to truncate the text with an ellipsis.
 
 {{< example >}}
 <dl class="row">
@@ -281,6 +295,11 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 
 ## Responsive font sizes
 
-As of v4.3.0, Bootstrap ships with the option to enable responsive font sizes, allowing text to scale more naturally across device and viewport sizes. <abbr title="Responsive font sizes">RFS</abbr> can be enabled by changing the `$enable-responsive-font-sizes` Sass variable to `true` and recompiling Bootstrap.
+As of v4.3.0, Bootstrap ships with the option to enable responsive font sizes, allowing text to scale more naturally
+across device and viewport sizes. <abbr title="Responsive font sizes">RFS</abbr> can be enabled by changing
+the `$enable-responsive-font-sizes` Sass variable to `true` and recompiling Bootstrap.
 
-To support <abbr title="Responsive font sizes">RFS</abbr>, we use a Sass mixin to replace our normal `font-size` properties. Responsive font sizes will be compiled into `calc()` functions with a mix of `rem` and viewport units to enable the responsive scaling behavior. More about <abbr title="Responsive font sizes">RFS</abbr> and its configuration can be found on its [GitHub repository](https://github.com/twbs/rfs/tree/{{< param "rfs_version" >}}).
+To support <abbr title="Responsive font sizes">RFS</abbr>, we use a Sass mixin to replace our normal `font-size`
+properties. Responsive font sizes will be compiled into `calc()` functions with a mix of `rem` and viewport units to
+enable the responsive scaling behavior. More about <abbr title="Responsive font sizes">RFS</abbr> and its configuration
+can be found on its [GitHub repository](https://github.com/twbs/rfs/tree/{{< param "rfs_version" >}}).

@@ -148,6 +148,7 @@
       padding: 1rem 0;
       border-color: #eee;
     }
+
     tr:first-child td {
       border-top: 0;
     }
@@ -184,6 +185,7 @@
     margin-top: .25rem;
     margin-bottom: .25rem;
   }
+
   > .btn-toolbar + .btn-toolbar {
     margin-top: .5rem;
   }
@@ -194,9 +196,11 @@
 .bd-example-control-sizing input[type="text"] + input[type="text"] {
   margin-top: .5rem;
 }
+
 .bd-example-form .input-group {
   margin-bottom: .5rem;
 }
+
 .bd-example > textarea.form-control {
   resize: vertical;
 }
@@ -205,6 +209,7 @@
 .bd-example > .list-group {
   max-width: 400px;
 }
+
 .bd-example > [class*="list-group-horizontal"] {
   max-width: 100%;
 }
@@ -216,6 +221,7 @@
     position: static;
     margin: -1rem -1rem 1rem;
   }
+
   .fixed-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
@@ -367,6 +373,7 @@
     background-color: transparent;
     border: 0;
   }
+
   pre code {
     @include font-size(inherit);
     color: $gray-900; // Effectively the base text color

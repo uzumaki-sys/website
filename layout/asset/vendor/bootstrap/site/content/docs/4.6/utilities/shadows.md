@@ -1,13 +1,12 @@
 ---
-layout: docs
-title: Shadows
-description: Add or remove shadows to elements with box-shadow utilities.
-group: utilities
+layout: docs title: Shadows description: Add or remove shadows to elements with box-shadow utilities. group: utilities
 ---
 
 ## Examples
 
-While shadows on components are disabled by default in Bootstrap and can be enabled via `$enable-shadows`, you can also quickly add or remove a shadow with our `box-shadow` utility classes. Includes support for `.shadow-none` and three default sizes (which have associated variables to match).
+While shadows on components are disabled by default in Bootstrap and can be enabled via `$enable-shadows`, you can also
+quickly add or remove a shadow with our `box-shadow` utility classes. Includes support for `.shadow-none` and three
+default sizes (which have associated variables to match).
 
 {{< example >}}
 <div class="shadow-none p-3 mb-5 bg-light rounded">No shadow</div>

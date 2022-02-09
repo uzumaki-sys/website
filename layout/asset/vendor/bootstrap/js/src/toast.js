@@ -68,6 +68,28 @@ class Toast {
     return Default
   }
 
+  // Static
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
+      const _config = typeof config === 'object' && config
+
+      if (!data) {
+        data = new Toast(this, _config)
+        $element.data(DATA_KEY, data)
+      }
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config](this)
+      }
+    })
+  }
+
   // Public
   show() {
     const showEvent = $.Event(EVENT_SHOW)
@@ -181,28 +203,6 @@ class Toast {
   _clearTimeout() {
     clearTimeout(this._timeout)
     this._timeout = null
-  }
-
-  // Static
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      const $element = $(this)
-      let data = $element.data(DATA_KEY)
-      const _config = typeof config === 'object' && config
-
-      if (!data) {
-        data = new Toast(this, _config)
-        $element.data(DATA_KEY, data)
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config](this)
-      }
-    })
   }
 }
 

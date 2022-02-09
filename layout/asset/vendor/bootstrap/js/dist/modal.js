@@ -5,11 +5,14 @@
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
-  typeof define === 'function' && define.amd ? define(['jquery', './util'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Modal = factory(global.jQuery, global.Util));
-})(this, (function ($, Util) { 'use strict';
+    typeof define === 'function' && define.amd ? define(['jquery', './util'], factory) :
+      (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Modal = factory(global.jQuery, global.Util));
+})(this, (function ($, Util) {
+  'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  function _interopDefaultLegacy(e) {
+    return e && typeof e === 'object' && 'default' in e ? e : {'default': e};
+  }
 
   var $__default = /*#__PURE__*/_interopDefaultLegacy($);
   var Util__default = /*#__PURE__*/_interopDefaultLegacy(Util);
@@ -341,11 +344,11 @@
       var _this5 = this;
 
       $__default["default"](document).off(EVENT_FOCUSIN) // Guard against infinite focus loop
-      .on(EVENT_FOCUSIN, function (event) {
-        if (document !== event.target && _this5._element !== event.target && $__default["default"](_this5._element).has(event.target).length === 0) {
-          _this5._element.focus();
-        }
-      });
+        .on(EVENT_FOCUSIN, function (event) {
+          if (document !== event.target && _this5._element !== event.target && $__default["default"](_this5._element).has(event.target).length === 0) {
+            _this5._element.focus();
+          }
+        });
     };
 
     _proto._setEscapeEvent = function _setEscapeEvent() {

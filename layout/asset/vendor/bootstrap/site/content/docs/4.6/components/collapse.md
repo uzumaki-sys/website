@@ -1,18 +1,16 @@
 ---
-layout: docs
-title: Collapse
-description: Toggle the visibility of content across your project with a few classes and our JavaScript plugins.
-group: components
-toc: true
+layout: docs title: Collapse description: Toggle the visibility of content across your project with a few classes and
+our JavaScript plugins. group: components toc: true
 ---
 
 ## How it works
 
-The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped
+to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given
+how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent
+wrapping element.
 
-{{< callout info >}}
-{{< partial "callout-info-prefersreducedmotion.md" >}}
-{{< /callout >}}
+{{< callout info >}} {{< partial "callout-info-prefersreducedmotion.md" >}} {{< /callout >}}
 
 ## Example
 
@@ -22,7 +20,9 @@ Click the buttons below to show and hide another element via class changes:
 - `.collapsing` is applied during transitions
 - `.collapse.show` shows content
 
-Generally, we recommend using a button with the `data-target` attribute. While not recommended from a semantic point of view, you can also use a link with the `href` attribute (and a `role="button"`). In both cases, the `data-toggle="collapse"` is required.
+Generally, we recommend using a button with the `data-target` attribute. While not recommended from a semantic point of
+view, you can also use a link with the `href` attribute (and a `role="button"`). In both cases,
+the `data-toggle="collapse"` is required.
 
 {{< example >}}
 <p>
@@ -42,8 +42,9 @@ Generally, we recommend using a button with the `data-target` attribute. While n
 
 ## Multiple targets
 
-A `<button>` or `<a>` can show and hide multiple elements by referencing them with a JQuery selector in its `href` or `data-target` attribute.
-Multiple `<button>` or `<a>` can show and hide an element if they each reference it with their `href` or `data-target` attribute
+A `<button>` or `<a>` can show and hide multiple elements by referencing them with a JQuery selector in its `href`
+or `data-target` attribute. Multiple `<button>` or `<a>` can show and hide an element if they each reference it with
+their `href` or `data-target` attribute
 
 {{< example >}}
 <p>
@@ -71,7 +72,8 @@ Multiple `<button>` or `<a>` can show and hide an element if they each reference
 
 ## Accordion example
 
-Using the [card]({{< docsref "/components/card" >}}) component, you can extend the default collapse behavior to create an accordion. To properly achieve the accordion style, be sure to use `.accordion` as a wrapper.
+Using the [card]({{< docsref "/components/card" >}}) component, you can extend the default collapse behavior to create
+an accordion. To properly achieve the accordion style, be sure to use `.accordion` as a wrapper.
 
 {{< example >}}
 <div class="accordion" id="accordionExample">
@@ -89,6 +91,7 @@ Using the [card]({{< docsref "/components/card" >}}) component, you can extend t
         Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
       </div>
     </div>
+
   </div>
   <div class="card">
     <div class="card-header" id="headingTwo">
@@ -123,11 +126,23 @@ Using the [card]({{< docsref "/components/card" >}}) component, you can extend t
 
 ## Accessibility
 
-Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you've set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element's HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
+Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the
+collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element
+is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you've set
+the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead.
+The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has
+been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same
+collapsible element). If the control element's HTML element is not a button (e.g., an `<a>` or `<div>`), the
+attribute `role="button"` should be added to the element.
 
-If your control element is targeting a single collapsible element – i.e. the `data-target` attribute is pointing to an `id` selector – you should add the `aria-controls` attribute to the control element, containing the `id` of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.
+If your control element is targeting a single collapsible element – i.e. the `data-target` attribute is pointing to
+an `id` selector – you should add the `aria-controls` attribute to the control element, containing the `id` of the
+collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide
+users with additional shortcuts to navigate directly to the collapsible element itself.
 
-Note that Bootstrap's current implementation does not cover the various keyboard interactions described in the [WAI-ARIA Authoring Practices 1.1 accordion pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) - you will need to include these yourself with custom JavaScript.
+Note that Bootstrap's current implementation does not cover the various keyboard interactions described in
+the [WAI-ARIA Authoring Practices 1.1 accordion pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) - you
+will need to include these yourself with custom JavaScript.
 
 ## Usage
 
@@ -141,9 +156,12 @@ These classes can be found in `_transitions.scss`.
 
 ### Via data attributes
 
-Just add `data-toggle="collapse"` and a `data-target` to the element to automatically assign control of one or more collapsible elements. The `data-target` attribute accepts a CSS selector to apply the collapse to. Be sure to add the class `collapse` to the collapsible element. If you'd like it to default open, add the additional class `show`.
+Just add `data-toggle="collapse"` and a `data-target` to the element to automatically assign control of one or more
+collapsible elements. The `data-target` attribute accepts a CSS selector to apply the collapse to. Be sure to add the
+class `collapse` to the collapsible element. If you'd like it to default open, add the additional class `show`.
 
-To add accordion-like group management to a collapsible area, add the data attribute `data-parent="#selector"`. Refer to the demo to see this in action.
+To add accordion-like group management to a collapsible area, add the data attribute `data-parent="#selector"`. Refer to
+the demo to see this in action.
 
 ### Via JavaScript
 
@@ -155,7 +173,8 @@ $('.collapse').collapse()
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-parent=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as
+in `data-parent=""`.
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -184,9 +203,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{{< callout danger >}}
-{{< partial "callout-danger-async-methods.md" >}}
-{{< /callout >}}
+{{< callout danger >}} {{< partial "callout-danger-async-methods.md" >}} {{< /callout >}}
 
 #### `.collapse(options)`
 
@@ -200,15 +217,18 @@ $('#myCollapsible').collapse({
 
 #### `.collapse('toggle')`
 
-Toggles a collapsible element to shown or hidden. **Returns to the caller before the collapsible element has actually been shown or hidden** (i.e. before the `shown.bs.collapse` or `hidden.bs.collapse` event occurs).
+Toggles a collapsible element to shown or hidden. **Returns to the caller before the collapsible element has actually
+been shown or hidden** (i.e. before the `shown.bs.collapse` or `hidden.bs.collapse` event occurs).
 
 #### `.collapse('show')`
 
-Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (i.e. before the `shown.bs.collapse` event occurs).
+Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (i.e.
+before the `shown.bs.collapse` event occurs).
 
 #### `.collapse('hide')`
 
-Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (i.e. before the `hidden.bs.collapse` event occurs).
+Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (i.e.
+before the `hidden.bs.collapse` event occurs).
 
 #### `.collapse('dispose')`
 

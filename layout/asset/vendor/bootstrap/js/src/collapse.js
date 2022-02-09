@@ -93,6 +93,41 @@ class Collapse {
     return Default
   }
 
+  // Static
+  static _getTargetFromElement(element) {
+    const selector = Util.getSelectorFromElement(element)
+    return selector ? document.querySelector(selector) : null
+  }
+
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
+      const _config = {
+        ...Default,
+        ...$element.data(),
+        ...(typeof config === 'object' && config ? config : {})
+      }
+
+      if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
+        _config.toggle = false
+      }
+
+      if (!data) {
+        data = new Collapse(this, _config)
+        $element.data(DATA_KEY, data)
+      }
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+
+        data[config]()
+      }
+    })
+  }
+
   // Public
   toggle() {
     if ($(this._element).hasClass(CLASS_NAME_SHOW)) {
@@ -306,41 +341,6 @@ class Collapse {
         .toggleClass(CLASS_NAME_COLLAPSED, !isOpen)
         .attr('aria-expanded', isOpen)
     }
-  }
-
-  // Static
-  static _getTargetFromElement(element) {
-    const selector = Util.getSelectorFromElement(element)
-    return selector ? document.querySelector(selector) : null
-  }
-
-  static _jQueryInterface(config) {
-    return this.each(function () {
-      const $element = $(this)
-      let data = $element.data(DATA_KEY)
-      const _config = {
-        ...Default,
-        ...$element.data(),
-        ...(typeof config === 'object' && config ? config : {})
-      }
-
-      if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
-        _config.toggle = false
-      }
-
-      if (!data) {
-        data = new Collapse(this, _config)
-        $element.data(DATA_KEY, data)
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config]()
-      }
-    })
   }
 }
 

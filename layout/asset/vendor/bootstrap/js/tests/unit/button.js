@@ -82,8 +82,8 @@ $(function () {
   QUnit.test('should toggle aria-pressed on buttons with container', function (assert) {
     assert.expect(1)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-        '<button id="btn1" class="btn btn-secondary" type="button">One</button>' +
-        '<button class="btn btn-secondary" type="button">Two</button>' +
+      '<button id="btn1" class="btn btn-secondary" type="button">One</button>' +
+      '<button class="btn btn-secondary" type="button">Two</button>' +
       '</div>'
     $('#qunit-fixture').append(groupHTML)
     $('#btn1').bootstrapButton('toggle')
@@ -387,9 +387,9 @@ $(function () {
   QUnit.test('should correctly set checked state on input and active class on the label when using button toggle', function (assert) {
     assert.expect(6)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-        '<label class="btn">' +
-          '<input type="checkbox">' +
-        '</label>' +
+      '<label class="btn">' +
+      '<input type="checkbox">' +
+      '</label>' +
       '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 

@@ -1,9 +1,6 @@
 ---
-layout: docs
-title: Text
-description: Documentation and examples for common text utilities to control alignment, wrapping, weight, and more.
-group: utilities
-toc: true
+layout: docs title: Text description: Documentation and examples for common text utilities to control alignment,
+wrapping, weight, and more. group: utilities toc: true
 ---
 
 ## Text alignment
@@ -14,7 +11,8 @@ Easily realign text to components with text alignment classes.
 <p class="text-justify">Some placeholder text to demonstrate justified text alignment. Will you do the same for me? It's time to face the music I'm no longer your muse. Heard it's beautiful, be the judge and my girls gonna take a vote. I can feel a phoenix inside of me. Heaven is jealous of our love, angels are crying from up above. Yeah, you take me to utopia.</p>
 {{< /example >}}
 
-For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
+For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as
+the grid system.
 
 {{< example >}}
 <p class="text-left">Left aligned text on all viewport sizes.</p>
@@ -45,7 +43,8 @@ Prevent text from wrapping with a `.text-nowrap` class.
 </div>
 {{< /example >}}
 
-For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis. **Requires `display: inline-block` or `display: block`.**
+For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis. **
+Requires `display: inline-block` or `display: block`.**
 
 {{< example >}}
 <!-- Block level -->
@@ -63,7 +62,9 @@ For longer content, you can add a `.text-truncate` class to truncate the text wi
 
 ## Word break
 
-Prevent long strings of text from breaking your components' layout by using `.text-break` to set `word-wrap: break-word` and `word-break: break-word`. We use `word-wrap` instead of the more common `overflow-wrap` for wider browser support, and add the deprecated `word-break: break-word` to avoid issues with flex containers.
+Prevent long strings of text from breaking your components' layout by using `.text-break` to set `word-wrap: break-word`
+and `word-break: break-word`. We use `word-wrap` instead of the more common `overflow-wrap` for wider browser support,
+and add the deprecated `word-break: break-word` to avoid issues with flex containers.
 
 {{< example >}}
 <p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
@@ -79,7 +80,8 @@ Transform text in components with text capitalization classes.
 <p class="text-capitalize">CapiTaliZed text.</p>
 {{< /example >}}
 
-Note how `.text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
+Note how `.text-capitalize` only changes the first letter of each word, leaving the case of any other letters
+unaffected.
 
 ## Font weight and italics
 

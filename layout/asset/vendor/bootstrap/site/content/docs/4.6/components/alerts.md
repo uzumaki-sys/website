@@ -1,38 +1,33 @@
 ---
-layout: docs
-title: Alerts
-description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
-group: components
-aliases:
-  - "/components/"
-  - "/docs/4.6/components/"
-toc: true
+layout: docs title: Alerts description: Provide contextual feedback messages for typical user actions with the handful
+of available and flexible alert messages. group: components aliases:
+
+- "/components/"
+- "/docs/4.6/components/"
+  toc: true
+
 ---
 
 ## Examples
 
-Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the eight **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts jQuery plugin](#dismissing).
+Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the
+eight **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use
+the [alerts jQuery plugin](#dismissing).
 
-{{< example >}}
-{{< alerts.inline >}}
-{{- range (index $.Site.Data "theme-colors") }}
+{{< example >}} {{< alerts.inline >}} {{- range (index $.Site.Data "theme-colors") }}
 <div class="alert alert-{{ .name }}" role="alert">
   A simple {{ .name }} alert—check it out!
 </div>{{- end -}}
 {{< /alerts.inline >}}
 {{< /example >}}
 
-{{< callout warning >}}
-{{< partial "callout-warning-color-assistive-technologies.md" >}}
-{{< /callout >}}
+{{< callout warning >}} {{< partial "callout-warning-color-assistive-technologies.md" >}} {{< /callout >}}
 
 ### Link color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
 
-{{< example >}}
-{{< alerts.inline >}}
-{{- range (index $.Site.Data "theme-colors") }}
+{{< example >}} {{< alerts.inline >}} {{- range (index $.Site.Data "theme-colors") }}
 <div class="alert alert-{{ .name }}" role="alert">
   A simple {{ .name }} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
 </div>{{ end -}}
@@ -52,15 +47,17 @@ Alerts can also contain additional HTML elements like headings, paragraphs and d
 </div>
 {{< /example >}}
 
-
 ### Dismissing
 
 Using the alert JavaScript plugin, it's possible to dismiss any alert inline. Here's how:
 
 - Be sure you've loaded the alert plugin, or the compiled Bootstrap JavaScript.
-- If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}). The compiled version includes this.
-- Add a dismiss button and the `.alert-dismissible` class, which adds extra padding to the right of the alert and positions the `.close` button.
-- On the dismiss button, add the `data-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
+- If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "
+  /getting-started/javascript#util" >}}). The compiled version includes this.
+- Add a dismiss button and the `.alert-dismissible` class, which adds extra padding to the right of the alert and
+  positions the `.close` button.
+- On the dismiss button, add the `data-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure
+  to use the `<button>` element with it for proper behavior across all devices.
 - To animate alerts when dismissing them, be sure to add the `.fade` and `.show` classes.
 
 You can see this in action with a live demo:
@@ -87,6 +84,7 @@ $('.alert').alert()
 Or with `data` attributes on a button **within the alert**, as demonstrated above:
 
 ```html
+
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
   <span aria-hidden="true">&times;</span>
 </button>

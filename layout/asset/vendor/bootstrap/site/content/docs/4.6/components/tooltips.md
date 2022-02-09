@@ -1,33 +1,31 @@
 ---
-layout: docs
-title: Tooltips
-description: Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-attributes for local title storage.
-group: components
-toc: true
+layout: docs title: Tooltips description: Documentation and examples for adding custom Bootstrap tooltips with CSS and
+JavaScript using CSS3 for animations and data-attributes for local title storage. group: components toc: true
 ---
 
 ## Overview
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the 3rd party library [Popper](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper in order for tooltips to work!
-- If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
+- Tooltips rely on the 3rd party library [Popper](https://popper.js.org/) for positioning. You must
+  include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js`
+  / `bootstrap.bundle.js` which contains Popper in order for tooltips to work!
+- If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "
+  /getting-started/javascript#util" >}}).
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
-- Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
+- Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button
+  groups, etc).
 - Triggering tooltips on hidden elements will not work.
 - Tooltips for `.disabled` or `disabled` elements must be triggered on a wrapper element.
-- When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+- When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use `white-space: nowrap;` on
+  your `<a>`s to avoid this behavior.
 - Tooltips must be hidden before their corresponding elements have been removed from the DOM.
 - Tooltips can be triggered thanks to an element inside a shadow DOM.
 
-{{< callout info >}}
-{{< partial "callout-info-sanitizer.md" >}}
-{{< /callout >}}
+{{< callout info >}} {{< partial "callout-info-sanitizer.md" >}} {{< /callout >}}
 
-{{< callout info >}}
-{{< partial "callout-info-prefersreducedmotion.md" >}}
-{{< /callout >}}
+{{< callout info >}} {{< partial "callout-info-prefersreducedmotion.md" >}} {{< /callout >}}
 
 Got all that? Great, let's see how they work with some examples.
 
@@ -63,6 +61,7 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 </div>
 
 ```html
+
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
   Tooltip on top
 </button>
@@ -80,7 +79,9 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 And with custom HTML added:
 
 ```html
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true"
+        title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
   Tooltip with HTML
 </button>
 ```
@@ -96,24 +97,35 @@ $('#example').tooltip(options)
 ```
 
 {{< callout warning >}}
+
 ##### Overflow `auto` and `scroll`
 
-Tooltip position attempts to automatically change when a parent container has `overflow: auto` or `overflow: scroll` like our `.table-responsive`, but still keeps the original placement's positioning. To resolve, set the `boundary` option to anything other than default value, `'scrollParent'`, such as `'window'`:
+Tooltip position attempts to automatically change when a parent container has `overflow: auto` or `overflow: scroll`
+like our `.table-responsive`, but still keeps the original placement's positioning. To resolve, set the `boundary`
+option to anything other than default value, `'scrollParent'`, such as `'window'`:
 
 ```js
-$('#example').tooltip({ boundary: 'window' })
+$('#example').tooltip({boundary: 'window'})
 ```
+
 {{< /callout >}}
 
 ### Markup
 
-The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the plugin).
+The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip.
+The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the
+plugin).
 
 {{< callout warning >}}
+
 ##### Making tooltips work for keyboard and assistive technology users
 
-You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the tooltip in this situation. Additionally, do not rely solely on `hover` as the trigger for your tooltip, as this will make your tooltips impossible to trigger for keyboard users.
-{{< /callout >}}
+You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links
+or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding
+the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for
+keyboard users, and most assistive technologies currently do not announce the tooltip in this situation. Additionally,
+do not rely solely on `hover` as the trigger for your tooltip, as this will make your tooltips impossible to trigger for
+keyboard users. {{< /callout >}}
 
 ```html
 <!-- HTML to write -->
@@ -130,7 +142,9 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
 
 ### Disabled elements
 
-Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`, and override the `pointer-events` on the disabled element.
+Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a
+tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally
+made keyboard-focusable using `tabindex="0"`, and override the `pointer-events` on the disabled element.
 
 <div class="tooltip-demo">
 {{< example >}}
@@ -142,11 +156,11 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as
+in `data-animation=""`.
 
-{{< callout warning >}}
-Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.
-{{< /callout >}}
+{{< callout warning >}} Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be
+supplied using data attributes. {{< /callout >}}
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -297,6 +311,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
 </table>
 
 {{< callout info >}}
+
 #### Data attributes for individual tooltips
 
 Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.
@@ -304,9 +319,7 @@ Options for individual tooltips can alternatively be specified through the use o
 
 ### Methods
 
-{{< callout danger >}}
-{{< partial "callout-danger-async-methods.md" >}}
-{{< /callout >}}
+{{< callout danger >}} {{< partial "callout-danger-async-methods.md" >}} {{< /callout >}}
 
 #### `$().tooltip(options)`
 
@@ -314,7 +327,9 @@ Attaches a tooltip handler to an element collection.
 
 #### `.tooltip('show')`
 
-Reveals an element's tooltip. **Returns to the caller before the tooltip has actually been shown** (i.e. before the `shown.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip. Tooltips with zero-length titles are never displayed.
+Reveals an element's tooltip. **Returns to the caller before the tooltip has actually been shown** (i.e. before
+the `shown.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip. Tooltips with zero-length
+titles are never displayed.
 
 ```js
 $('#element').tooltip('show')
@@ -322,7 +337,8 @@ $('#element').tooltip('show')
 
 #### `.tooltip('hide')`
 
-Hides an element's tooltip. **Returns to the caller before the tooltip has actually been hidden** (i.e. before the `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip.
+Hides an element's tooltip. **Returns to the caller before the tooltip has actually been hidden** (i.e. before
+the `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip.
 
 ```js
 $('#element').tooltip('hide')
@@ -330,7 +346,9 @@ $('#element').tooltip('hide')
 
 #### `.tooltip('toggle')`
 
-Toggles an element's tooltip. **Returns to the caller before the tooltip has actually been shown or hidden** (i.e. before the `shown.bs.tooltip` or `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip.
+Toggles an element's tooltip. **Returns to the caller before the tooltip has actually been shown or hidden** (i.e.
+before the `shown.bs.tooltip` or `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the
+tooltip.
 
 ```js
 $('#element').tooltip('toggle')
@@ -338,7 +356,8 @@ $('#element').tooltip('toggle')
 
 #### `.tooltip('dispose')`
 
-Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
+Hides and destroys an element's tooltip. Tooltips that use delegation (which are created
+using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
 ```js
 $('#element').tooltip('dispose')

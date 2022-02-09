@@ -1,14 +1,12 @@
 ---
-layout: docs
-title: Sizing
-description: Easily make an element as wide or as tall with our width and height utilities.
-group: utilities
-toc: true
+layout: docs title: Sizing description: Easily make an element as wide or as tall with our width and height utilities.
+group: utilities toc: true
 ---
 
 ## Relative to the parent
 
-Width and height utilities are generated from the `$sizes` Sass map in `_variables.scss`. Includes support for `25%`, `50%`, `75%`, `100%`, and `auto` by default. Modify those values as you need to generate different utilities here.
+Width and height utilities are generated from the `$sizes` Sass map in `_variables.scss`. Includes support for `25%`
+, `50%`, `75%`, `100%`, and `auto` by default. Modify those values as you need to generate different utilities here.
 
 {{< example >}}
 <div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>
@@ -30,9 +28,7 @@ Width and height utilities are generated from the `$sizes` Sass map in `_variabl
 
 You can also use `max-width: 100%;` and `max-height: 100%;` utilities as needed.
 
-{{< example >}}
-{{< placeholder width="100%" height="100" class="mw-100" text="Max-width 100%" >}}
-{{< /example >}}
+{{< example >}} {{< placeholder width="100%" height="100" class="mw-100" text="Max-width 100%" >}} {{< /example >}}
 
 {{< example >}}
 <div style="height: 100px; background-color: rgba(255,0,0,0.1);">
@@ -45,6 +41,7 @@ You can also use `max-width: 100%;` and `max-height: 100%;` utilities as needed.
 You can also use utilities to set the width and height relative to the viewport.
 
 ```html
+
 <div class="min-vw-100">Min-width 100vw</div>
 <div class="min-vh-100">Min-height 100vh</div>
 <div class="vw-100">Width 100vw</div>

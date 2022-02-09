@@ -1,11 +1,10 @@
 ---
-layout: docs
-title: Jumbotron
-description: Lightweight, flexible component for showcasing hero unit style content.
+layout: docs title: Jumbotron description: Lightweight, flexible component for showcasing hero unit style content.
 group: components
 ---
 
-A lightweight, flexible component that can optionally extend the entire viewport to showcase key marketing messages on your site.
+A lightweight, flexible component that can optionally extend the entire viewport to showcase key marketing messages on
+your site.
 
 {{< example >}}
 <div class="jumbotron">
@@ -17,7 +16,8 @@ A lightweight, flexible component that can optionally extend the entire viewport
 </div>
 {{< /example >}}
 
-To make the jumbotron full width, and without rounded corners, add the `.jumbotron-fluid` modifier class and add a `.container` or `.container-fluid` within.
+To make the jumbotron full width, and without rounded corners, add the `.jumbotron-fluid` modifier class and add
+a `.container` or `.container-fluid` within.
 
 {{< example >}}
 <div class="jumbotron jumbotron-fluid">

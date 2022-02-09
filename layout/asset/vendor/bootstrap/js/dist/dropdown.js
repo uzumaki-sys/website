@@ -5,11 +5,14 @@
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('popper.js'), require('./util.js')) :
-  typeof define === 'function' && define.amd ? define(['jquery', 'popper.js', './util'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Dropdown = factory(global.jQuery, global.Popper, global.Util));
-})(this, (function ($, Popper, Util) { 'use strict';
+    typeof define === 'function' && define.amd ? define(['jquery', 'popper.js', './util'], factory) :
+      (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Dropdown = factory(global.jQuery, global.Popper, global.Util));
+})(this, (function ($, Popper, Util) {
+  'use strict';
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+  function _interopDefaultLegacy(e) {
+    return e && typeof e === 'object' && 'default' in e ? e : {'default': e};
+  }
 
   var $__default = /*#__PURE__*/_interopDefaultLegacy($);
   var Popper__default = /*#__PURE__*/_interopDefaultLegacy(Popper);
