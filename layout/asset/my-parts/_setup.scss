@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Julius+Sans+One&display=swap');
 
 // fontawesome webfonts フォルダ
-$fa-font-path: "../vendor/fontawesome/webfonts";
+$fa-font-path: "./vendor/fontawesome/webfonts";
 @import "../vendor/fontawesome/scss/fontawesome.scss";
 @import "../vendor/fontawesome/scss/solid.scss";
 @import "../vendor/fontawesome/scss/brands.scss";
@@ -57,7 +57,7 @@ $enable-gradients: true;
     ime-mode: active;
 }
 
-.imeAlpNumNornal {
+.imeAlpNumNormal {
     ime-mode: inactive;
 }
 
@@ -67,4 +67,5 @@ $enable-gradients: true;
         display: none;
     }
 }
+
 

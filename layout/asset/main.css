@@ -5359,7 +5359,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("../vendor/fontawesome/webfonts/fa-solid-900.woff2") format("woff2"), url("../vendor/fontawesome/webfonts/fa-solid-900.ttf") format("truetype"); }
+  src: url("./vendor/fontawesome/webfonts/fa-solid-900.woff2") format("woff2"), url("./vendor/fontawesome/webfonts/fa-solid-900.ttf") format("truetype"); }
 .fas,
 .fa-solid {
   font-family: 'Font Awesome 6 Free';
@@ -5378,7 +5378,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../vendor/fontawesome/webfonts/fa-brands-400.woff2") format("woff2"), url("../vendor/fontawesome/webfonts/fa-brands-400.ttf") format("truetype"); }
+  src: url("./vendor/fontawesome/webfonts/fa-brands-400.woff2") format("woff2"), url("./vendor/fontawesome/webfonts/fa-brands-400.ttf") format("truetype"); }
 .fab,
 .fa-brands {
   font-family: 'Font Awesome 6 Brands';
@@ -14757,7 +14757,7 @@ a.text-dark:hover, a.text-dark:focus {
 .imeOn {
   ime-mode: active; }
 
-.imeAlpNumNornal {
+.imeAlpNumNormal {
   ime-mode: inactive; }
 
 .hideBr br {
